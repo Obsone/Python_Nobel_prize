@@ -31,3 +31,17 @@ max_female_dict = {
     max_female_decade_category['decade'].values[0]:max_female_decade_category['category'].values[0]
 }
 print(max_female_dict)
+
+# Finding the first woman to win a Nobel Prize
+nobel_women = nobel[nobel['female_winner']]
+min_row = nobel_women[nobel_women['year'] == nobel_women['year'].min()]
+first_woman_name = min_row['full_name'].values[0]
+first_woman_category = min_row['category'].values[0]
+print(f"\n The first woman to win a Nobel Prize was {first_woman_name}, in the category of {first_woman_category}.")
+
+# Selecting the laureates that have received 2 or more prizes
+counts = nobel['full_name'].value_counts()
+repeats = counts[counts >= 2].index
+repeat_list = list(repeats)
+
+print("\n The repeat winners are :", repeat_list)
